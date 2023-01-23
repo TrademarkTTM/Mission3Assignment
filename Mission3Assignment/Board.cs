@@ -11,19 +11,14 @@ namespace Mission3Assignment
             string fillerLine = "     |     |     ";
             string bottomLine = "_____|_____|_____";
 
-            for (int i = 0; i < board.Length; i++)
-            {
-                board[i] = "asdf";
-            }
-
             Console.WriteLine(fillerLine);
-            Console.WriteLine("__" + board[0] + "__|__" + board[1] + "__|__" + board[2] + "__");
+            Console.WriteLine("  " + board[0] + "  |  " + board[1] + "  |  " + board[2] + "  ");
             Console.WriteLine(bottomLine);
             Console.WriteLine(fillerLine);
-            Console.WriteLine("__" + board[3] + "__|__" + board[4] + "__|__" + board[5] + "__");
+            Console.WriteLine("  " + board[3] + "  |  " + board[4] + "  |  " + board[5] + "  ");
             Console.WriteLine(bottomLine);
             Console.WriteLine(fillerLine);
-            Console.WriteLine("__" + board[6] + "__|__" + board[7] + "__|__" + board[8] + "__");
+            Console.WriteLine("  " + board[6] + "  |  " + board[7] + "  |  " + board[8] + "  ");
             Console.WriteLine(fillerLine);
 
         }
