@@ -8,6 +8,7 @@ namespace Mission3Assignment
         {
             //Variables
             Boolean winTF = false;
+            int count = 0;
 
             // Welcome text
             Console.WriteLine("Welcome User! Are you ready?!?!");
@@ -25,7 +26,7 @@ namespace Mission3Assignment
             Board bo = new Board();
 
             //Start of the game
-            while(winTF == false) 
+            while(winTF == false || count == 9) 
             {
                 //Is user1's turn finished
                 Boolean user1Done = false;
@@ -33,7 +34,7 @@ namespace Mission3Assignment
                 while(user1Done == false)
                 {
                     //Ask each player for their spot choice
-                    Console.Write("User 1, what spot do you choose? ");
+                    Console.Write("User 1(X), what spot do you choose? ");
                     //Convert string input to integer (check this if we want)
                     int user1Selection = (Convert.ToInt32(Console.ReadLine()) - 1);
 
@@ -52,14 +53,18 @@ namespace Mission3Assignment
                     }
                 }
 
+                count++;
+
                 // Check for a winner by calling method from support class
-                if (bo.Winner(BoardArray) != "")
+                if (bo.Winner(BoardArray) != "" || count == 9)
                 {
                     winTF = true;
+                    break;
                 }
-                //set winTF to true if there is a winner
-                //sup.checkWinner(BoardArray); this may change
-                //Print the winner
+
+                //Print the Board
+                bo.PrintBoard(BoardArray);
+
 
                 //Is user2's turn finished
                 Boolean user2Done = false;
@@ -67,7 +72,7 @@ namespace Mission3Assignment
                 while (user2Done == false)
                 {
                     //Ask each player for their spot choice
-                    Console.Write("User 2, what spot do you choose? ");
+                    Console.Write("User 2(O), what spot do you choose? ");
                     //Convert string input to integer (check this if we want)
                     int user2Selection = (Convert.ToInt32(Console.ReadLine())- 1);
 
@@ -86,20 +91,31 @@ namespace Mission3Assignment
                     }
                 }
 
+                count++;
+
                 // Check for a winner by calling method from support class
-                if (bo.Winner(BoardArray) != "")
+                if (bo.Winner(BoardArray) != "" || count == 9)
                 {
                     winTF = true;
+                    break;
                 }
-                //set winTF to true if there is a winner
-                //sup.checkWinner(BoardArray); this may change
-                //Print the winner
+
+                //Print the Board
+                bo.PrintBoard(BoardArray);
 
             }
 
             // Print the board by calling the method from supporting class
             bo.PrintBoard(BoardArray);
-            Console.WriteLine("The winner is " + bo.Winner(BoardArray));
+            if (bo.Winner(BoardArray) != "")
+            {
+                Console.WriteLine("The winner is " + bo.Winner(BoardArray));
+            }
+            else
+            {
+                Console.WriteLine("The game is a tie. ");
+            }
+            
 
         }
     }
