@@ -22,7 +22,7 @@ namespace Mission3Assignment
             }
 
             //Instanciate (class name) class
-            //Support sup = new Support();
+            Board bo = new Board();
 
             //Start of the game
             while(winTF == false) 
@@ -35,7 +35,7 @@ namespace Mission3Assignment
                     //Ask each player for their spot choice
                     Console.Write("User 1, what spot do you choose? ");
                     //Convert string input to integer (check this if we want)
-                    int user1Selection = Convert.ToInt32(Console.ReadLine());
+                    int user1Selection = (Convert.ToInt32(Console.ReadLine()) - 1);
 
                     //set selection = what is in the array at that selection
                     string selection = BoardArray[user1Selection];
@@ -53,6 +53,10 @@ namespace Mission3Assignment
                 }
 
                 // Check for a winner by calling method from support class
+                if (bo.Winner(BoardArray) != "")
+                {
+                    winTF = true;
+                }
                 //set winTF to true if there is a winner
                 //sup.checkWinner(BoardArray); this may change
                 //Print the winner
@@ -65,7 +69,7 @@ namespace Mission3Assignment
                     //Ask each player for their spot choice
                     Console.Write("User 2, what spot do you choose? ");
                     //Convert string input to integer (check this if we want)
-                    int user2Selection = Convert.ToInt32(Console.ReadLine());
+                    int user2Selection = (Convert.ToInt32(Console.ReadLine())- 1);
 
                     //set selection = what is in the array at that selection
                     string selection = BoardArray[user2Selection];
@@ -83,15 +87,19 @@ namespace Mission3Assignment
                 }
 
                 // Check for a winner by calling method from support class
+                if (bo.Winner(BoardArray) != "")
+                {
+                    winTF = true;
+                }
                 //set winTF to true if there is a winner
                 //sup.checkWinner(BoardArray); this may change
                 //Print the winner
 
-
             }
 
             // Print the board by calling the method from supporting class
-            //Console.Write(sup.PrintBoard(BoardArray));
+            bo.PrintBoard(BoardArray);
+            Console.WriteLine("The winner is " + bo.Winner(BoardArray));
 
         }
     }
