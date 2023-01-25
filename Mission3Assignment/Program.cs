@@ -25,6 +25,9 @@ namespace Mission3Assignment
             //Instanciate (class name) class
             Board bo = new Board();
 
+            //Showing the initial board
+            bo.PrintBoard(BoardArray);
+
             //Start of the game
             while(winTF == false || count == 9) 
             {
